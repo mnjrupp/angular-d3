@@ -11,7 +11,9 @@ import {FileUploadComponent} from './file-upload/file-upload.component';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule],
-  declarations: [ AppComponent, HelloComponent,PieComponent,BarComponent,ScatterComponent,FileUploadComponent ],
+  declarations: [ AppComponent, HelloComponent,
+    PieComponent,BarComponent,ScatterComponent,
+    FileUploadComponent ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
