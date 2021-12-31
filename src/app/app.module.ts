@@ -7,13 +7,15 @@ import {ScatterComponent} from './scatter/scatter.component';
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import {FileUploadComponent} from './file-upload/file-upload.component';
+import {TableComponent} from './table/table.component';
 
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule],
   declarations: [ AppComponent, HelloComponent,
     PieComponent,BarComponent,ScatterComponent,
-    FileUploadComponent ],
+    FileUploadComponent,
+    TableComponent ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

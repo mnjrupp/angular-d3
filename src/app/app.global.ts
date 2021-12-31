@@ -17,7 +17,7 @@ export class AppGlobals {
   constructor(private http: HttpClient){
     this.http.get('./assets/frameworks.csv', {responseType: 'text'})
     .subscribe(
-        data => {console.log(data);AppGlobals.csvData = data; }   
+        data => {console.log(data); }   
       
     );
   }
