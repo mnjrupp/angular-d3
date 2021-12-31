@@ -8,10 +8,11 @@ import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import {FileUploadComponent} from './file-upload/file-upload.component';
 import {TableComponent} from './table/table.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule],
+  imports:      [ BrowserModule, FormsModule,HttpClientModule],
   declarations: [ AppComponent, HelloComponent,
     PieComponent,BarComponent,ScatterComponent,
     FileUploadComponent,
