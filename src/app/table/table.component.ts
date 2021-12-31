@@ -8,17 +8,17 @@ import { HttpClient } from "@angular/common/http";
 })
 export class TableComponent implements OnInit {
 
-  public userArray: any =[];
+  public csvArray: any =[];
   constructor(private http: HttpClient){
     this.http.get('./assets/frameworks.csv', {responseType: 'text'})
     .subscribe(
         data => {
             let csvToRowArray = data.split("\n");
-            for (let index = 1; index < csvToRowArray.length - 1; index++) {
+            for (let index = 0; index < csvToRowArray.length - 1; index++) {
               let row = csvToRowArray[index].split(",");
-              this.userArray.push(row.toString().trim());
+              this.csvArray.push(row.toString().trim());
             }
-            console.log(this.userArray);
+            console.log(this.csvArray);
         },
         error => {
             console.log(error);
