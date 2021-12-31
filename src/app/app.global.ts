@@ -1,5 +1,5 @@
 
-import csvFile from './assets/frameworks.csv';
+import * as csvFile from './assets/frameworks.csv';
 
 export class AppGlobals {
 
@@ -11,5 +11,5 @@ export class AppGlobals {
     {"Framework": "Ember", "Stars": "21471", "Released": "2011"},
   ];
 
-  public static csvDataSet = csvFile;
+  public static csvDataSet:any = csvFile ;
 }
