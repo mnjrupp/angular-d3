@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AppGlobals} from '../app.global';
 
 @Component({
   selector: 'app-file-upload',
@@ -21,10 +22,11 @@ export class FileUploadComponent implements OnInit {
     var file: File = target.files[0];
     reader.onload = (e: any) => {
 
+     AppGlobals.dynData= e.target.result
+    console.log(AppGlobals.dynData);
 
-    console.log(reader.result);
 
     }
-    reader.readAsText(file)
+    reader.readAsText(file);
   }
 }

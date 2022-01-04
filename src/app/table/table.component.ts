@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
+import {AppGlobals} from '../app.global';
 
 @Component({
   selector: 'app-table',
@@ -19,6 +20,7 @@ export class TableComponent implements OnInit {
               this.csvArray.push(row.toString().trim());
             }
             console.log(this.csvArray);
+            //AppGlobals.csvData=this.csvArray;
         },
         error => {
             console.log(error);
