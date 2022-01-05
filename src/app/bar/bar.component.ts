@@ -34,7 +34,9 @@ export class BarComponent implements OnInit, OnDestroy {
     //console.log(message);
    // console.log('.. results after converting');
    // console.log(JSON.stringify(this.messageReceived));
-    this.drawBars(message);
+   var parsedD = JSON.parse(message);
+   this.drawBars(parsedD);
+    //this.drawBars(message);
     });
 
 
@@ -44,7 +46,7 @@ export class BarComponent implements OnInit, OnDestroy {
     this.createSvg();
     //parse data from a csv
    // d3.csv("/assets/frameworks.csv").then(data => this.drawBars(data));
-   // d3.json(this.messageReceived).then(data => this.drawBars(data));
+   d3.json(this.messageReceived).then(data => this.drawBars(data));
     //console.log(AppGlobals.dynData);
     //this.drawBars(AppGlobals.dynData);
   }
