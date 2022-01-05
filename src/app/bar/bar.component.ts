@@ -27,7 +27,8 @@ export class BarComponent implements OnInit {
     //parse data from a csv
    // d3.csv("/assets/frameworks.csv").then(data => this.drawBars(data));
     //d3.csv(AppGlobals.dynData).then(data => this.drawBars(data));
-    this.drawBars(AppGlobals.dynData);
+    //console.log(AppGlobals.dynData);
+    //this.drawBars(AppGlobals.dynData);
   }
 
   private createSvg(): void {
