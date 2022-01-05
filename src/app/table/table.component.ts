@@ -30,7 +30,7 @@ export class TableComponent implements OnInit,OnDestroy {
     console.log(message);
    // console.log('.. results after converting');
     console.log(this.messageReceived);
-    this.csvArray = this.messageReceived;
+   this.csvArray = JSON.parse(message);
     //this.drawPlot(message);
   });
 }
