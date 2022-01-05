@@ -30,10 +30,10 @@ export class BarComponent implements OnInit, OnDestroy {
     this.subscriptionName= this.Service.getUpdate().subscribe
     (message => { //message contains the data sent from service
     this.messageReceived = message ;
-    console.log('...Received the following message');
-    console.log(message);
+    console.log('...bar component Received the following message');
+    //console.log(message);
    // console.log('.. results after converting');
-    console.log(JSON.stringify(this.messageReceived));
+   // console.log(JSON.stringify(this.messageReceived));
     this.drawBars(message);
     });
 
