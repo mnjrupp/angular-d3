@@ -19,7 +19,7 @@ export class TableComponent implements OnInit {
               let row = csvToRowArray[index].split(",");
               this.csvArray.push(row.toString().trim());
             }
-            console.log(this.csvArray);
+            //console.log(this.csvArray);
             //AppGlobals.csvData=this.csvArray;
         },
         error => {

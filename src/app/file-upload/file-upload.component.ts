@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AppGlobals} from '../app.global';
+import {CommonService} from '../common.service';
 
 @Component({
   selector: 'app-file-upload',
@@ -8,7 +9,7 @@ import {AppGlobals} from '../app.global';
 })
 export class FileUploadComponent implements OnInit {
 
-  constructor() { }
+  constructor(private Service: CommonService) { }
 
   ngOnInit() {
   }
@@ -24,9 +25,14 @@ export class FileUploadComponent implements OnInit {
 
      AppGlobals.dynData= e.target.result
     console.log(AppGlobals.dynData);
+    this.sendMessage(AppGlobals.dynData);
 
 
     }
     reader.readAsText(file);
   }
+  sendMessage(data:any): void {
+    // send message to subscribers via observable subject
+    this.Service.sendUpdate(data);
+}
 }
