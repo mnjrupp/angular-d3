@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import {CommonService} from '../common.service';
 import * as d3 from 'd3';
 
 @Component({
@@ -6,7 +8,7 @@ import * as d3 from 'd3';
   templateUrl: './scatter.component.html',
   styleUrls: ['./scatter.component.css']
 })
-export class ScatterComponent implements OnInit {
+export class ScatterComponent implements OnInit,OnDestroy {
 
   private data = [
     {"Framework": "Vue", "Stars": "166443", "Released": "2014"},
@@ -15,11 +17,26 @@ export class ScatterComponent implements OnInit {
     {"Framework": "Backbone", "Stars": "27647", "Released": "2010"},
     {"Framework": "Ember", "Stars": "21471", "Released": "2011"},
   ];
+
+  private messageReceived: any[];
+  private subscriptionName: Subscription;
   private svg;
   private margin = 50;
   private width = 750 - (this.margin * 2);
   private height = 400 - (this.margin * 2);
-  constructor() { }
+
+  constructor(private Service:CommonService) {
+    this.subscriptionName= this.Service.getUpdate().subscribe
+    (message => { //message contains the data sent from service
+    this.messageReceived = message ;
+    console.log('...Received the following message');
+    console.log(message);
+   // console.log('.. results after converting');
+    console.log(JSON.stringify(this.messageReceived));
+    this.drawPlot(message);
+  });
+  
+}
 
   private createSvg(): void {
     this.svg = d3.select("figure#scatter")
@@ -73,4 +90,7 @@ private drawPlot(data:any[]): void {
     this.drawPlot(this.data);
   }
 
+  ngOnDestroy() {
+    this.subscriptionName.unsubscribe();
+  }
 }

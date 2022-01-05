@@ -11,13 +11,13 @@ import * as d3 from 'd3';
 })
 export class BarComponent implements OnInit, OnDestroy {
 
-  private data = [
+ /* private data = [
     {"Framework": "Vue", "Stars": "166443", "Released": "2014"},
     {"Framework": "React", "Stars": "150793", "Released": "2013"},
     {"Framework": "Angular", "Stars": "62342", "Released": "2016"},
     {"Framework": "Backbone", "Stars": "27647", "Released": "2010"},
     {"Framework": "Ember", "Stars": "21471", "Released": "2011"},
-  ];
+  ];*/
   private messageReceived: any[];
   private subscriptionName: Subscription; //important to create a subscription
   private svg;
@@ -31,10 +31,10 @@ export class BarComponent implements OnInit, OnDestroy {
     (message => { //message contains the data sent from service
     this.messageReceived = message ;
     console.log('...Received the following message');
-    console.log(this.messageReceived);
+    console.log(message);
    // console.log('.. results after converting');
-   // console.log(JSON.stringify(this.messageReceived));
-    d3.json(this.messageReceived).then(data => this.drawBars(data));
+    console.log(JSON.stringify(this.messageReceived));
+    this.drawBars(message);
     });
 
 
@@ -44,7 +44,7 @@ export class BarComponent implements OnInit, OnDestroy {
     this.createSvg();
     //parse data from a csv
    // d3.csv("/assets/frameworks.csv").then(data => this.drawBars(data));
-    d3.json(this.messageReceived).then(data => this.drawBars(data));
+   // d3.json(this.messageReceived).then(data => this.drawBars(data));
     //console.log(AppGlobals.dynData);
     //this.drawBars(AppGlobals.dynData);
   }
