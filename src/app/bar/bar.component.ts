@@ -30,7 +30,11 @@ export class BarComponent implements OnInit, OnDestroy {
     this.subscriptionName= this.Service.getUpdate().subscribe
     (message => { //message contains the data sent from service
     this.messageReceived = message ;
+    console.log('...Received the following message');
     console.log(this.messageReceived);
+   // console.log('.. results after converting');
+   // console.log(JSON.stringify(this.messageReceived));
+    d3.json(this.messageReceived).then(data => this.drawBars(data));
     });
 
 
@@ -40,7 +44,7 @@ export class BarComponent implements OnInit, OnDestroy {
     this.createSvg();
     //parse data from a csv
    // d3.csv("/assets/frameworks.csv").then(data => this.drawBars(data));
-    d3.csv(this.messageReceived).then(data => this.drawBars(data));
+    d3.json(this.messageReceived).then(data => this.drawBars(data));
     //console.log(AppGlobals.dynData);
     //this.drawBars(AppGlobals.dynData);
   }
@@ -56,6 +60,8 @@ export class BarComponent implements OnInit, OnDestroy {
 
 private drawBars(data: any[]): void {
   // Create the X-axis band scale
+  try{
+  
   const x = d3.scaleBand()
   .range([0, this.width])
   .domain(data.map(d => d.Framework))
@@ -88,6 +94,12 @@ private drawBars(data: any[]): void {
   .attr("width", x.bandwidth())
   .attr("height", (d) => this.height - y(d.Stars))
   .attr("fill", "#d04a35");
+  }
+  catch(e){
+
+    console.log(e);
+
+  }
 }
 
 ngOnDestroy() {

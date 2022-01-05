@@ -24,15 +24,17 @@ export class FileUploadComponent implements OnInit {
     reader.onload = (e: any) => {
 
      AppGlobals.dynData= e.target.result
-    console.log(AppGlobals.dynData);
+     console.log("..results from FileUpload");
+     console.log(this.Service.csvJSON(AppGlobals.dynData));
     this.sendMessage(AppGlobals.dynData);
 
 
     }
     reader.readAsText(file);
   }
-  sendMessage(data:any): void {
+  sendMessage(data:any[]): void {
     // send message to subscribers via observable subject
-    this.Service.sendUpdate(data);
-}
+    this.Service.sendUpdate(this.Service.csvJSON(data));
+  }
+      
 }
